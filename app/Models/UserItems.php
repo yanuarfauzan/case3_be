@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class UserItems extends Model
 {
     use HasFactory, HasUuids;
     protected $guarded = [];
-
+    protected $table = 'user_items';
     public function getIncrementing()
     {
         return false;
@@ -19,8 +19,10 @@ class Category extends Model
     {
         return 'string';
     }
-    public function items()
-    {
-        return $this->belongsToMany(Item::class);
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+    public function item() {
+        return $this->belongsTo(Item::class);
     }
 }

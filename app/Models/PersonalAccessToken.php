@@ -6,21 +6,15 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class PersonalAccessToken extends Model
 {
     use HasFactory, HasUuids;
-    protected $guarded = [];
-
-    public function getIncrementing()
-    {
+    protected $table = 'personal_access_tokens';
+    protected $guared = [];
+    public function getIncrementing() {
         return false;
     }
-    public function getKeyType()
-    {
+    public function getKeyType() {
         return 'string';
-    }
-    public function items()
-    {
-        return $this->belongsToMany(Item::class);
     }
 }
